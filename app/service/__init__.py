@@ -1,0 +1,1 @@
+from app.service.property_details_service import PropertyDetailsService
