@@ -35,7 +35,7 @@ class HouseCanaryClient(PropertyDetailClient):
         response = self.session.get(f"{self.url}{ENDPOINT}", params=address, auth=self.auth, timeout=self.timeout)
         data = response.json()
         if data["property/details"]["api_code"] == 204:
-            raise UnavailableDataException("HomeCanary missing property details for given address.")
+            raise UnavailableDataException("HouseCanary missing property details for given address.")
         return data
 
     def get_sewer_type(self, **address_fields):
@@ -48,4 +48,4 @@ class HouseCanaryClient(PropertyDetailClient):
         try:
             return {"sewer": property_details["property/details"]["result"]["property"]["sewer"]}
         except KeyError:
-            raise UnavailableDataException("HomeCanary missing sewer data for given address.")
+            raise UnavailableDataException("HouseCanary missing sewer data for given address.")
